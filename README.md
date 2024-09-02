@@ -15,10 +15,12 @@ Filters detected contours to ensure only valid holes are counted, improving accu
 Image Stitching:
 
 Employs OpenCV’s stitching algorithms to merge multiple images into a single panoramic view.
-Provides a comprehensive view of the frame, allowing for better analysis of holes over larger areas and ensuring thorough inspection of the entire surface.
+Provides a comprehensive view of the frame, 
+allowing for better analysis of holes over larger areas and ensuring thorough inspection of the entire surface.
 PLC Integration:
 
-Connects to Siemens PLCs using the snap7 library, enabling real-time monitoring and control.
+Connects to Siemens PLCs using the snap7 library, enabling re
+al-time monitoring and control.
 Facilitates automated quality control by reading from and writing to the PLC, integrating the system with existing industrial automation setups.
 Real-Time Data Management:
 
@@ -43,3 +45,6 @@ Running the System:
 
 Execute the script to start capturing images, detecting holes, and managing data.
 This project represents a significant advancement in automated quality control, combining state-of-the-art technology with practical industrial applications.
+
+![Jetson ORIN Nano Developer Kit](https://github.com/user-attachments/assets/bdc85d14-1dfe-4a23-bbda-3cc39bdb3cf4)
+![kit_details](https://github.com/user-attachments/assets/a7534d6e-ad68-4ec9-ba03-bf39296513eb)
