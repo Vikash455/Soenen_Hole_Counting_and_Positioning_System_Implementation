@@ -46,5 +46,6 @@ Running the System:
 Execute the script to start capturing images, detecting holes, and managing data.
 This project represents a significant advancement in automated quality control, combining state-of-the-art technology with practical industrial applications.
 
+Used Jetson Nano Developer Kit in which Ubuntu was installed.
 ![Jetson ORIN Nano Developer Kit](https://github.com/user-attachments/assets/bdc85d14-1dfe-4a23-bbda-3cc39bdb3cf4)
 ![kit_details](https://github.com/user-attachments/assets/a7534d6e-ad68-4ec9-ba03-bf39296513eb)
