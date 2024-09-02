@@ -1,0 +1,4 @@
+Hole Detection Report
+
+Hole ID   Diameter (mm)       Coordinates (x, y) in mm      
+1         5.02                (17.36, 58.06)                
