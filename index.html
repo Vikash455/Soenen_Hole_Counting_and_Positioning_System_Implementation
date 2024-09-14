@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .dashboard {
+            display: flex;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+            height: 80vh; /* Adjust height as needed */
+        }
+        .dashboard-left {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto; /* Enable scrolling if needed */
+        }
+        .dashboard-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            flex: 1;
+            overflow: hidden; /* Ensure image doesn't overflow */
+        }
+        .stitched_image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            transform: rotate(0deg); /* Remove rotation */
+        }
+        .plc-status {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        .disconnected {
+            background-color: red;
+        }
+        .connected {
+            background-color: green;
+        }
+    </style>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            socket.on('update_data', data => {
+                document.getElementById('plc-status').className = 'plc-status ' + (data.plc_status === 'Connected' ? 'connected' : 'disconnected');
+                document.getElementById('plc-status-text').innerText = data.plc_status;
+                document.getElementById('capture-status').innerText = data.capture_status;
+                document.getElementById('total-holes').innerText = data.total_holes;
+                document.getElementById('stitched-image').src = data.stitched_image;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="dashboard-left">
+            <h1>Dashboard</h1>
+            <div>
+                <h3>PLC Connection Status:</h3>
+                <div id="plc-status" class="plc-status {{ plc_status == 'Connected' ? 'connected' : 'disconnected' }}"></div>
+                <span id="plc-status-text">{{ plc_status }}</span>
+            </div>
+            <h3>Camera Capture Status: <span id="capture-status">{{ capture_status }}</span></h3>
+            <h3>Total Count of Holes: <span id="total-holes">{{ total_holes }}</span></h3>
+        </div>
+        <div class="dashboard-right">
+            <img id="stitched-image" class="stitched_image" src="{{ url_for('video_feed') }}" alt="Stitched Image">
+        </div>
+    </div>
+</body>
+</html>
